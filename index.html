@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
+
+
+    <title>Memory Card Game</title>
+</head>
+
+<body>
+    <header class="game-header">
+        <h1>Memory Card Game 🧠</h1>
+    </header>
+
+    <section class="stats-bar">
+        <div class="stat">
+            ⏱️ <span id="timer">
+                00:00
+            </span>
+        </div>
+
+        <div class="stat">
+            🔢 <span id="moves">0</span>
+        </div>
+
+        <div class="stat">
+            🏆 <span id="best-score">--</span>
+        </div>
+    </section>
+
+    <main>
+
+        <div id="game-board">
+
+        </div>
+
+        <div class="controls">
+            <button id="restart-btn">
+                Restart Game(🔄)
+            </button>
+        </div>
+    </main>
+
+    <div id="victory-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="victory-title">
+
+        <div class="modal-content">
+            <h2 id="victory-title">Congratulations🎉!</h2>
+
+            <p>
+                ⏱️ Time: <span id="final-time">00:00</span>
+            </p>
+
+            <p>
+                🔢 Moves: <span id="final-moves">0</span>
+            </p>
+
+            <button id="play-again-btn">
+                🔄 Play Again
+            </button>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
