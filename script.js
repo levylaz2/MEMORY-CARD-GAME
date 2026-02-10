@@ -2,8 +2,6 @@ const flipSound = new Audio('assets/sounds/flip.mp3');
 const matchSound = new Audio('assets/sounds/match.mp3');
 const wrongSound = new Audio('assets/sounds/wrong.mp3');
 
-
-
 const emojis = ['🎯', '🎨', '⚽', '🎵', '🚀', '🍕', '🌟', '🎮'];
 const cardValues = [...emojis, ...emojis]; // 8 pairs = 16 cards
 
