@@ -1,10 +1,35 @@
 const introSound = new Audio('assets/sounds/intro.mp3');
+introSound.loop = true;
+
+function unlockIntroSound() {
+    introSound.currentTime = 0;
+    introSound.play().catch(()=>{});
+    document.removeEventListener('click', unlockIntroSound);
+}
+
+document.addEventListener('click', unlockIntroSound);
+
+
+
 const flipSound = new Audio('assets/sounds/flip.mp3');
 const matchSound = new Audio('assets/sounds/match.mp3');
 const wrongSound = new Audio('assets/sounds/wrong.mp3');
+const victorySound = new Audio('assets/sounds/victory.mp3');
 
-const emojis = ['🎯', '🎨', '⚽', '🎵', '🚀', '🍕', '🌟', '🎮'];
-const cardValues = [...emojis, ...emojis]; // 8 pairs = 16 cards
+
+const allEmojis = [
+'🎯','🎨','⚽','🎵','🚀','🍕','🌟','🎮',
+'🐱','🔥','💎','🧠','🎲','👑','🛸','⚡'
+];
+
+let cardValues = [];
+
+const difficultySettings = {
+  easy: 6,     // 6 pairs = 12 cards
+  medium: 8,   // 8 pairs = 16 cards
+  hard: 12     // 12 pairs = 24 cards
+};
+
 
 let flippedCards = [];
 let matchedPairsCount = 0;
@@ -27,6 +52,13 @@ const finalMovesDisplay = document.getElementById('final-moves');
 const splashScreen = document.getElementById('splash-screen');
 const enterBtn = document.getElementById('enter-btn');
 
+document.querySelectorAll('.difficulty-buttons button')
+.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const level = btn.dataset.level;
+    setDifficulty(level);
+  });
+});
 
 
 // Fisher–Yates shuffle
@@ -99,10 +131,15 @@ function handleCardClick(event) {
         return;
     }
 
-    if (!gameStarted) {
-        startTimer();
-        gameStarted = true;
-    }
+if (!gameStarted) {
+    startTimer();
+    gameStarted = true;
+
+    // 🔇 stop intro music on first move
+    introSound.pause();
+    introSound.currentTime = 0;
+}
+
 
     clickedCard.classList.add('flipped');
     flippedCards.push(clickedCard);
@@ -158,9 +195,27 @@ function endGame() {
     finalMovesDisplay.textContent = moveCounter;
 
     victoryModal.classList.add('show');
+
+     victorySound.currentTime = 0;
+    victorySound.play(); // ✅ plays when modal appears
 }
 
+function setDifficulty(level) {
+
+  const pairCount = difficultySettings[level];
+
+  const selected = allEmojis.slice(0, pairCount);
+  cardValues = [...selected, ...selected];
+
+  initGame(); // restart game with new size
+}
+
+
 function initGame() {
+   // 🔇 stop victory sound if playing
+    victorySound.pause();
+    victorySound.currentTime = 0;
+
     flippedCards = [];
     matchedPairsCount = 0;
     moveCounter = 0;
@@ -180,7 +235,12 @@ function initGame() {
 }
 
 restartBtn.addEventListener('click', initGame);
-playAgainBtn.addEventListener('click', initGame);
+playAgainBtn.addEventListener('click', () => {
+    victorySound.pause();
+    victorySound.currentTime = 0;
+    initGame();
+});
+
 
 
 function formatTime(totalSeconds) {

@@ -208,6 +208,36 @@ body {
   text-shadow: 0 5px 20px rgba(0,0,0,.5);
 }
 
+.difficulty-panel {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.difficulty-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.difficulty-buttons button {
+  padding: 12px 22px;
+  border-radius: 12px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+
+  background: linear-gradient(135deg,#6366f1,#2563eb);
+  color: white;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
+  transition: .25s;
+}
+
+.difficulty-buttons button:hover {
+  transform: scale(1.1);
+}
+
+
 .stats-bar {
   display: flex;
   justify-content: space-between;
