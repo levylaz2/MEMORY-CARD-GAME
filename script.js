@@ -1,3 +1,4 @@
+const introSound = new Audio('assets/sounds/intro.mp3');
 const flipSound = new Audio('assets/sounds/flip.mp3');
 const matchSound = new Audio('assets/sounds/match.mp3');
 const wrongSound = new Audio('assets/sounds/wrong.mp3');
@@ -23,6 +24,9 @@ const victoryModal = document.getElementById('victory-modal');
 const playAgainBtn = document.getElementById('play-again-btn');
 const finalTimeDisplay = document.getElementById('final-time');
 const finalMovesDisplay = document.getElementById('final-moves');
+const splashScreen = document.getElementById('splash-screen');
+const enterBtn = document.getElementById('enter-btn');
+
 
 
 // Fisher–Yates shuffle
@@ -186,8 +190,24 @@ function formatTime(totalSeconds) {
     return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
 }
 
-
-
 initGame();
 
+window.addEventListener('load', () => {
+    introSound.play().catch(() => { });
+});
+
+enterBtn.addEventListener('click', () => {
+
+  introSound.currentTime = 0;
+  introSound.play();
+
+  splashScreen.classList.add('splash-hide');
+
+  setTimeout(() => {
+    splashScreen.style.display = 'none';
+    document.getElementById('game-ui').style.display = 'block';
+    initGame();
+  }, 600);
+
+});
 

@@ -13,58 +13,89 @@
 </head>
 
 <body>
-    <header class="game-header">
-        <h1>Memory Card Game 🧠</h1>
-    </header>
 
-    <section class="stats-bar">
-        <div class="stat">
-            ⏱️ <span id="timer">
-                00:00
-            </span>
-        </div>
+    <!-- ================= SPLASH SCREEN ================= -->
 
-        <div class="stat">
-            🔢 <span id="moves">0</span>
-        </div>
+    <div id="splash-screen">
 
-        <div class="stat">
-            🏆 <span id="best-score">--</span>
-        </div>
-    </section>
+        <div class="particles"></div>
 
-    <main>
+        <div class="splash-content">
 
-        <div id="game-board">
+            <h1 class="splash-logo">Flip The Card Game 🧠</h1>
 
-        </div>
+            <p class="splash-tagline">Train • Focus • Remember</p>
 
-        <div class="controls">
-            <button id="restart-btn">
-                Restart Game(🔄)
-            </button>
-        </div>
-    </main>
+            <div class="card-preview">
+                <div class="preview-card">🎯</div>
+                <div class="preview-card">🎮</div>
+                <div class="preview-card">🚀</div>
+            </div>
 
-    <div id="victory-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="victory-title">
+            <div class="loading-bar">
+                <div id="loading-fill"></div>
+            </div>
 
-        <div class="modal-content">
-            <h2 id="victory-title">Congratulations🎉!</h2>
-
-            <p>
-                ⏱️ Time: <span id="final-time">00:00</span>
-            </p>
-
-            <p>
-                🔢 Moves: <span id="final-moves">0</span>
-            </p>
-
-            <button id="play-again-btn">
-                🔄 Play Again
-            </button>
+            <button id="enter-btn">ENTER GAME</button>
 
         </div>
     </div>
+
+    <div id="game-ui">
+        <header class="game-header">
+            <h1>Flip the Card Game 🧠</h1>
+        </header>
+
+        <section class="stats-bar">
+            <div class="stat">
+                ⏱️ <span id="timer">
+                    00:00
+                </span>
+            </div>
+
+            <div class="stat">
+                🔢 <span id="moves">0</span>
+            </div>
+
+            <div class="stat">
+                🏆 <span id="best-score">--</span>
+            </div>
+        </section>
+
+        <main>
+            <div id="game-board">
+
+            </div>
+
+            <div class="controls">
+                <button id="restart-btn">
+                    Restart Game(🔄)
+                </button>
+            </div>
+        </main>
+
+        <div id="victory-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="victory-title">
+
+            <div class="modal-content">
+                <h2 id="victory-title">Congratulations🎉!</h2>
+
+                <p>
+                    ⏱️ Time: <span id="final-time">00:00</span>
+                </p>
+
+                <p>
+                    🔢 Moves: <span id="final-moves">0</span>
+                </p>
+
+                <button id="play-again-btn">
+                    🔄 Play Again
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+
     <script src="script.js"></script>
 </body>
 
